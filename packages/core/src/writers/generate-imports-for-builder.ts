@@ -8,29 +8,35 @@ export function generateImportsForBuilder(
   imports: GeneratorImport[],
   relativeSchemasPath: string,
 ) {
-  const isZodSchemaOutput =
-    isObject(output.schemas) && output.schemas.type === 'zod';
+  const schemaOutputType = isObject(output.schemas)
+    ? output.schemas.type
+    : null;
+  const isSchemaOutput =
+    schemaOutputType === 'zod' || schemaOutputType === 'valibot';
+  const schemaSuffix = isSchemaOutput ? `.${schemaOutputType}` : '';
 
   if (!output.indexFiles) {
     return uniqueBy(imports, (x) => x.name).map((i) => {
       const baseName = i.schemaName || i.name;
       const name = conventionName(baseName, output.namingConvention);
-      const suffix = isZodSchemaOutput ? '.zod' : '';
       const importExtension = output.fileExtension?.replace(/\.ts$/, '') || '';
       return {
-        exports: isZodSchemaOutput ? [{ ...i, values: true }] : [i],
+        exports: isSchemaOutput ? [{ ...i, values: true }] : [i],
         dependency: upath.joinSafe(
           relativeSchemasPath,
-          `${name}${suffix}${importExtension}`,
+          `${name}${schemaSuffix}${importExtension}`,
         ),
       };
     });
   } else {
-    if (isZodSchemaOutput) {
+    if (isSchemaOutput) {
       return [
         {
           exports: imports.map((i) => ({ ...i, values: true })),
-          dependency: upath.joinSafe(relativeSchemasPath, 'index.zod'),
+          dependency: upath.joinSafe(
+            relativeSchemasPath,
+            `index${schemaSuffix}`,
+          ),
         },
       ];
     } else {

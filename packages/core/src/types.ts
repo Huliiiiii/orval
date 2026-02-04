@@ -92,6 +92,7 @@ export type NormalizedOverrideOutput = {
   angular: Required<AngularOptions>;
   swr: SwrOptions;
   zod: NormalizedZodOptions;
+  valibot: NormalizedValibotOptions;
   fetch: NormalizedFetchOptions;
   operationName?: (
     operation: OpenApiOperationObject,
@@ -136,6 +137,7 @@ export type NormalizedOperationOptions = {
   angular?: Required<AngularOptions>;
   swr?: SwrOptions;
   zod?: NormalizedZodOptions;
+  valibot?: NormalizedValibotOptions;
   operationName?: (
     operation: OpenApiOperationObject,
     route: string,
@@ -205,7 +207,7 @@ export const EnumGeneration = {
 export type EnumGeneration =
   (typeof EnumGeneration)[keyof typeof EnumGeneration];
 
-export type SchemaGenerationType = 'typescript' | 'zod';
+export type SchemaGenerationType = 'typescript' | 'zod' | 'valibot';
 
 export type SchemaOptions = {
   path: string;
@@ -281,6 +283,7 @@ export const OutputClient = {
   VUE_QUERY: 'vue-query',
   SWR: 'swr',
   ZOD: 'zod',
+  VALIBOT: 'valibot',
   HONO: 'hono',
   FETCH: 'fetch',
   MCP: 'mcp',
@@ -462,6 +465,7 @@ export type OverrideOutput = {
   swr?: SwrOptions;
   angular?: AngularOptions;
   zod?: ZodOptions;
+  valibot?: ValibotOptions;
   operationName?: (
     operation: OpenApiOperationObject,
     route: string,
@@ -585,6 +589,40 @@ export type NormalizedZodOptions = {
   timeOptions: ZodTimeOptions;
 };
 
+export type ValibotOptions = {
+  strict?: {
+    param?: boolean;
+    query?: boolean;
+    header?: boolean;
+    body?: boolean;
+    response?: boolean;
+  };
+  generate?: {
+    param?: boolean;
+    query?: boolean;
+    header?: boolean;
+    body?: boolean;
+    response?: boolean;
+  };
+};
+
+export type NormalizedValibotOptions = {
+  strict: {
+    param: boolean;
+    query: boolean;
+    header: boolean;
+    body: boolean;
+    response: boolean;
+  };
+  generate: {
+    param: boolean;
+    query: boolean;
+    header: boolean;
+    body: boolean;
+    response: boolean;
+  };
+};
+
 export type InvalidateTarget =
   | string
   | {
@@ -699,6 +737,7 @@ export type OperationOptions = {
   angular?: Required<AngularOptions>;
   swr?: SwrOptions;
   zod?: ZodOptions;
+  valibot?: ValibotOptions;
   operationName?: (
     operation: OpenApiOperationObject,
     route: string,

@@ -28,6 +28,7 @@ import * as mock from '@orval/mock';
 import query from '@orval/query';
 import solidStart from '@orval/solid-start';
 import swr from '@orval/swr';
+import valibot from '@orval/valibot';
 import zod from '@orval/zod';
 
 const DEFAULT_CLIENT = OutputClient.AXIOS;
@@ -48,6 +49,7 @@ const getGeneratorClient = (
     'vue-query': query({ output, type: 'vue-query' })(),
     swr: swr()(),
     zod: zod()(),
+    valibot: valibot()(),
     hono: hono()(),
     fetch: fetchClient()(),
     mcp: mcp()(),

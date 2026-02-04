@@ -26,6 +26,10 @@ import { unique } from 'remeda';
 import type { TypeDocOptions } from 'typedoc';
 
 import { executeHook } from './utils';
+import {
+  writeValibotSchemas,
+  writeValibotSchemasFromVerbs,
+} from './write-valibot-specs';
 import { writeZodSchemas, writeZodSchemasFromVerbs } from './write-zod-specs';
 
 function getHeader(
@@ -260,6 +264,32 @@ export async function writeSpecs(
             },
           );
         }
+      } else if (schemaType === 'valibot') {
+        const fileExtension = '.valibot.ts';
+
+        await writeValibotSchemas(
+          builder,
+          output.schemas.path,
+          fileExtension,
+          header,
+          output,
+        );
+
+        if (builder.verbOptions) {
+          await writeValibotSchemasFromVerbs(
+            builder.verbOptions,
+            output.schemas.path,
+            fileExtension,
+            header,
+            output,
+            {
+              spec: builder.spec,
+              target: builder.target,
+              workspace,
+              output,
+            },
+          );
+        }
       }
     }
   }
@@ -274,7 +304,10 @@ export async function writeSpecs(
       output,
       projectName,
       header,
-      needSchema: !output.schemas && output.client !== 'zod',
+      needSchema:
+        !output.schemas &&
+        output.client !== 'zod' &&
+        output.client !== 'valibot',
     });
   }
 

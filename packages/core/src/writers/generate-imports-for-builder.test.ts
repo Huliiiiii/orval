@@ -135,6 +135,24 @@ describe('generateImportsForBuilder', () => {
         },
       ]);
     });
+
+    it('should handle valibot schemas with custom extension', () => {
+      const output = createMockOutput({
+        indexFiles: false,
+        fileExtension: '.gen.ts',
+        schemas: { path: './schemas', type: 'valibot' },
+      });
+      const imports = [createMockImport('User')];
+
+      const result = generateImportsForBuilder(output, imports, '../models');
+
+      expect(result).toEqual([
+        {
+          exports: [{ name: 'User', values: true }],
+          dependency: '../models/user.valibot.gen',
+        },
+      ]);
+    });
   });
 
   describe('with indexFiles', () => {
@@ -169,6 +187,24 @@ describe('generateImportsForBuilder', () => {
         {
           exports: [{ name: 'User', values: true }],
           dependency: '../models/index.zod',
+        },
+      ]);
+    });
+
+    it('should generate valibot index import with custom extension', () => {
+      const output = createMockOutput({
+        indexFiles: true,
+        fileExtension: '.gen.ts',
+        schemas: { path: './schemas', type: 'valibot' },
+      });
+      const imports = [createMockImport('User')];
+
+      const result = generateImportsForBuilder(output, imports, '../models');
+
+      expect(result).toEqual([
+        {
+          exports: [{ name: 'User', values: true }],
+          dependency: '../models/index.valibot',
         },
       ]);
     });

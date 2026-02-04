@@ -362,6 +362,24 @@ export async function normalizeOptions(
           dateTimeOptions: outputOptions.override?.zod?.dateTimeOptions ?? {},
           timeOptions: outputOptions.override?.zod?.timeOptions ?? {},
         },
+        valibot: {
+          strict: {
+            param: outputOptions.override?.valibot?.strict?.param ?? false,
+            query: outputOptions.override?.valibot?.strict?.query ?? false,
+            header: outputOptions.override?.valibot?.strict?.header ?? false,
+            body: outputOptions.override?.valibot?.strict?.body ?? false,
+            response:
+              outputOptions.override?.valibot?.strict?.response ?? false,
+          },
+          generate: {
+            param: outputOptions.override?.valibot?.generate?.param ?? true,
+            query: outputOptions.override?.valibot?.generate?.query ?? true,
+            header: outputOptions.override?.valibot?.generate?.header ?? true,
+            body: outputOptions.override?.valibot?.generate?.body ?? true,
+            response:
+              outputOptions.override?.valibot?.generate?.response ?? true,
+          },
+        },
         swr: {
           generateErrorTypes: false,
           ...outputOptions.override?.swr,
@@ -468,6 +486,7 @@ function normalizeOperationsAndTags(
           paramsSerializer,
           query,
           zod,
+          valibot,
           ...rest
         },
       ]) => {
@@ -550,6 +569,26 @@ function normalizeOperationsAndTags(
                       zod?.generateEachHttpStatus ?? false,
                     dateTimeOptions: zod?.dateTimeOptions ?? {},
                     timeOptions: zod?.timeOptions ?? {},
+                  },
+                }
+              : {}),
+            ...(valibot
+              ? {
+                  valibot: {
+                    strict: {
+                      param: valibot.strict?.param ?? false,
+                      query: valibot.strict?.query ?? false,
+                      header: valibot.strict?.header ?? false,
+                      body: valibot.strict?.body ?? false,
+                      response: valibot.strict?.response ?? false,
+                    },
+                    generate: {
+                      param: valibot.generate?.param ?? true,
+                      query: valibot.generate?.query ?? true,
+                      header: valibot.generate?.header ?? true,
+                      body: valibot.generate?.body ?? true,
+                      response: valibot.generate?.response ?? true,
+                    },
                   },
                 }
               : {}),

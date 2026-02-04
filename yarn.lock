@@ -5571,6 +5571,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@orval/valibot@workspace:*, @orval/valibot@workspace:packages/valibot":
+  version: 0.0.0-use.local
+  resolution: "@orval/valibot@workspace:packages/valibot"
+  dependencies:
+    "@orval/core": "workspace:*"
+    eslint: "catalog:"
+    remeda: "npm:^2.32.0"
+    rimraf: "catalog:"
+    tsdown: "catalog:"
+    vitest: "catalog:"
+  languageName: unknown
+  linkType: soft
+
 "@orval/zod@workspace:*, @orval/zod@workspace:packages/zod":
   version: 0.0.0-use.local
   resolution: "@orval/zod@workspace:packages/zod"
@@ -18634,6 +18647,7 @@ __metadata:
     "@orval/query": "workspace:*"
     "@orval/solid-start": "workspace:*"
     "@orval/swr": "workspace:*"
+    "@orval/valibot": "workspace:*"
     "@orval/zod": "workspace:*"
     "@scalar/json-magic": "npm:^0.8.8"
     "@scalar/openapi-parser": "npm:^0.23.9"

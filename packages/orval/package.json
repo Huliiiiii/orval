@@ -41,6 +41,7 @@
     "vue",
     "swr",
     "zod",
+    "valibot",
     "hono"
   ],
   "author": {
@@ -81,6 +82,7 @@
     "@orval/query": "workspace:*",
     "@orval/solid-start": "workspace:*",
     "@orval/swr": "workspace:*",
+    "@orval/valibot": "workspace:*",
     "@orval/zod": "workspace:*",
     "@scalar/json-magic": "^0.8.8",
     "@scalar/openapi-parser": "^0.23.9",
