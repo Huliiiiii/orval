@@ -3550,7 +3550,7 @@ __metadata:
   dependencies:
     "@cloudflare/workers-types": "npm:^4.20260131.0"
     "@hono/zod-validator": "npm:^0.7.3"
-    hono: "npm:^4.11.7"
+    hono: "npm:^4.13.16"
     orval: "workspace:*"
     wrangler: "npm:^4.59.2"
   languageName: unknown
@@ -14415,7 +14415,7 @@ __metadata:
   dependencies:
     "@cloudflare/workers-types": "npm:^4.20260131.0"
     "@hono/zod-validator": "npm:^0.7.3"
-    hono: "npm:^4.11.7"
+    hono: "npm:^4.13.16"
     wrangler: "npm:^4.59.2"
   languageName: unknown
   linkType: soft
@@ -14434,17 +14434,17 @@ __metadata:
   dependencies:
     "@cloudflare/workers-types": "npm:^4.20260131.0"
     "@hono/zod-validator": "npm:^0.7.3"
-    hono: "npm:^4.11.7"
+    hono: "npm:^4.13.16"
     orval: "workspace:*"
     wrangler: "npm:^4.59.2"
     zod: "npm:^3.25.76"
   languageName: unknown
   linkType: soft
 
-"hono@npm:^4.11.7":
-  version: 4.11.7
-  resolution: "hono@npm:4.11.7"
-  checksum: 10c0/c7cde1779c9352fc6aacb242af009f280f4d89315cf95135d08df5c680f845fcfb1c3c1a650ec15e1d1c2d0af26fdc87b745bb3c471c5045d88c247a7bd2aae4
+"hono@npm:^4.13.16":
+  version: 4.13.16
+  resolution: "hono@npm:4.13.16"
+  checksum: 10c0/8a06f1d49bb98fd38a2bc4d5c1f5410b4c5a9fbe2dff85fbad2191a1b55fde93b64b63b2deba97d3e241630aedd800c57d1f4dc539e5f93ece81809fa63cbed9
   languageName: node
   linkType: hard
 
@@ -18570,7 +18570,7 @@ __metadata:
     "@tanstack/vue-query": "npm:^5.92.7"
     "@types/react": "npm:18.3.24"
     axios: "npm:^1.13.2"
-    hono: "npm:^4.11.7"
+    hono: "npm:^4.13.16"
     msw: "npm:^2.12.7"
     npm-run-all: "npm:^4.1.5"
     openapi3-ts: "npm:^4.5.0"
